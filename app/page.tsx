@@ -1,6 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { XMarkIcon, CheckIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon, CheckIcon, PlusIcon } from '@heroicons/react/24/solid';
+import { AdjustmentsHorizontalIcon, ClockIcon, InboxIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'; // Importa l'icona
+
+
+import backgroundImage from './styles/PAPER.jpg'; // Percorso relativo dal componente
 
 interface Todo {
   id: string;
@@ -54,7 +58,7 @@ export default function Home() {
             if (!filters.completed && !filters.inProgress) return textMatch;
             if (filters.completed && !filters.inProgress) return textMatch && todo.completed;
             if (!filters.completed && filters.inProgress) return textMatch && !todo.completed;
-            return textMatch; // semplificato: se entrambi sono true, mostra comunque
+            return textMatch; 
         });
     });
 }, [todos, searchTerm, filters]);
@@ -76,87 +80,173 @@ export default function Home() {
     setTimeout(() => {
       setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
       setItemsToRemove((prev) => prev.filter((item) => item !== id));
-    }, 500);
+    }, 400);
   };
 
   const handleFilterChange = (filterName: 'completed' | 'inProgress') => {
     setFilters((prevFilters) => ({ ...prevFilters, [filterName]: !prevFilters[filterName] }));
   };
 
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="p-6 rounded-lg shadow-md max-w-md w-full bg-white mx-auto mt-4 mb-4">
+      <main className="p-6 rounded-lg shadow-md max-w-md w-full mx-auto mt-4 mb-4"
+        style={{ 
+          backgroundImage: `url(${backgroundImage.src})`, 
+          backgroundRepeat: 'repeat', 
+          backgroundSize: 'contain', 
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        }}
+      >
         <div className="flex space-x-2 mb-6">
           <input
             type="text"
             id="new-todo"
             value={newTodo}
             onChange={(e) => setNewTodo(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && addTodo()} // Condensato l'handler
+            onKeyDown={(e) => e.key === 'Enter' && addTodo()} 
             placeholder="Aggiungi alla lista ..."
-            className="border border-gray-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-500 outline-none"
+            className="border border-blue-800 rounded px-3 py-2 w-full focus:ring-2 focus:ring-blue-600 outline-none"
           />
-          <button onClick={addTodo} className="bg-blue-600 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">
+          <button
+            onClick={addTodo}
+            className="bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 text-white font-medium py-2 px-3 rounded-md inline-flex items-center" 
+          >
             Aggiungi
+            <PlusIcon className="h-5 w-5 ml-2" aria-hidden="true" /> 
           </button>
         </div>
 
         <div className="mb-4">
-          <button onClick={() => setShowFilters(!showFilters)} className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded mb-2">
-            {showFilters ? "Nascondi Filtri" : "Mostra Filtri"}
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className={`w-full flex justify-between items-center py-2 px-4 rounded mb-2 transition-colors duration-300
+              ${(filters.completed || filters.inProgress || searchTerm !== '')
+                ? 'bg-yellow-100 hover:bg-yellow-200 text-yellow-700 border border-yellow-300'
+                : 'bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300'
+              }`}
+          >
+            <span className="font-medium">{showFilters ? "Nascondi Filtri" : "Mostra Filtri"}</span>
+            <div className="flex items-center"> 
+                {(filters.completed || filters.inProgress || searchTerm !== '') && (
+                    <span className='text-xs text-yellow-600 mr-1'>Filtri Attivi</span>
+                )}
+              <AdjustmentsHorizontalIcon className="h-5 w-5" /> 
+            </div>
           </button>
 
-          {showFilters && (
-            <div>
-              <input
-                type="text"
-                placeholder="Cerca..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-300 rounded px-3 py-2 w-full mb-2 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-              <div className="flex space-x-4">
-                <label className="inline-flex items-center">
-                  <input type="checkbox" checked={filters.completed} onChange={() => handleFilterChange('completed')} className="form-checkbox h-5 w-5 text-blue-600" />
-                  <span className="ml-2">Completati</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input type="checkbox" checked={filters.inProgress} onChange={() => handleFilterChange('inProgress')} className="form-checkbox h-5 w-5 text-blue-600" />
-                  <span className="ml-2">In Corso</span>
-                </label>
-              </div>
+          {(filters.completed || filters.inProgress || searchTerm !== '') && !showFilters && (
+            <div className="text-sm text-gray-700 mb-2 p-3 bg-gray-50 rounded border border-gray-200 flex flex-wrap gap-2 items-center">
+              <span className="font-medium mr-1">Filtri:</span>
+              {searchTerm && <span className="px-2 py-1 bg-gray-200 rounded-full text-xs">Ricerca: "{searchTerm}" <button onClick={() => setSearchTerm('')} className='ml-1 text-red-500'>X</button></span>}
+              {filters.completed && <span className="px-2 py-1 bg-green-200 rounded-full text-xs">Completati <button onClick={() => handleFilterChange('completed')} className='ml-1 text-red-500'>X</button></span>}
+              {filters.inProgress && <span className="px-2 py-1 bg-blue-200 rounded-full text-xs">In Corso <button onClick={() => handleFilterChange('inProgress')} className='ml-1 text-red-500'>X</button></span>}
             </div>
           )}
-        </div>
-
-        {displayedTodos.length === 0 && <p className="text-center text-gray-500">Nessun elemento trovato</p>}
-
-        <ul className="space-y-2 max-h-screen overflow-y-auto overflow-x-hidden">
-          {displayedTodos.map((todo, index) => {
-            const isRemoving = itemsToRemove.includes(todo.id);
-            return (
-              <li
-                key={todo.id}
-                className={`p-3 flex items-center justify-between rounded shadow-sm hover:shadow-md transition-all duration-300
-                  ${todo.completed ? 'bg-green-100 border-green-300 text-gray-400 line-through opacity-70' : `${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'} border border-gray-300 text-gray-600`}
-                  ${isRemoving ? 'opacity-0 translate-x-full bg-red-200' : ''}`}
-                style={{ transitionProperty: 'opacity, transform' }}
-              >
-                <div className="flex items-start w-full">
-                  <button onClick={() => toggleTodo(todo.id)} className="cursor-pointer flex items-center justify-center w-7 h-7 rounded hover:animate-pulse hover:scale-105 focus:outline-none relative shrink-0" aria-label={todo.completed ? "Segna come non completato" : "Segna come completato"}>
-                    {!todo.completed && <div className="absolute inset-0 rounded-full border border-gray-400"></div>}
-                    {todo.completed && <CheckIcon className="w-8 h-8 text-green-500" />}
-                  </button>
-                  <span className="px-2 flex-grow break-anywhere">{todo.text}</span>
-                </div>
-                <button onClick={() => deleteTodo(todo.id)} aria-label={`Elimina ${todo.text}`} className="text-red-400 hover:text-red-800 hover:animate-spin focus:outline-none shrink-0">
-                  <XMarkIcon className="w-6 h-6" />
+          
+          <div className={`transition-all duration-500 ease-in-out overflow-hidden ${showFilters ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="bg-yellow-100 border border-yellow-300 rounded shadow-sm p-4">
+              <div className="flex justify-between mb-4">
+                <input
+                  type="text"
+                  placeholder="Cerca..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="font-mono border border-orange-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-orange-500 outline-none"
+                />
+                <button
+                  onClick={() => setShowFilters(false)}
+                  className="text-orange-600 hover:text-orange-800 hover:animate-spin focus:outline-none"
+                >
+                  <XMarkIcon className="h-6 w-6" />
                 </button>
-              </li>
-            );
-          })}
-        </ul>
-      </main>
-    </div>
-  );
+            </div>
+            <div className="flex justify-between ">
+
+              <label className="inline-flex items-center cursor-pointer">
+                <div
+                  className={`relative w-6 h-6 rounded-md border-2 border-gray-300 mr-2 transition-all duration-200 ${
+                    filters.completed
+                      ? 'bg-green-800 border-green-600 ring-2 ring-green-200'
+                      : 'hover:border-gray-400'
+                  }`}
+                  style={{ 
+                    boxShadow: filters.completed ? '0 0 10px 5px rgba(74, 222, 128, 0.7)' : 'none', 
+                  }}
+                  onClick={() => handleFilterChange('completed')}
+                >
+                  {filters.completed && <CheckIcon className="absolute inset-0 w-full h-full text-white" />}
+                </div>
+                  <span className="text-gray-700">Fatto</span>
+              </label>
+
+              <label className="inline-flex items-center cursor-pointer">
+                <div
+                  className={`relative w-6 h-6 rounded-md border-2 border-gray-300 mr-2 transition-all duration-200 ${
+                    filters.inProgress
+                      ? 'bg-blue-800 border-blue-600 ring-2 ring-blue-200'
+                      : 'hover:border-gray-400'
+                  }`}
+                  style={{
+                    boxShadow: filters.inProgress ? '0 0 10px 5px rgba(59, 130, 246, 0.7)' : 'none', 
+                  }}
+                  onClick={() => handleFilterChange('inProgress')}
+                >
+                  {filters.inProgress && <ClockIcon className="absolute inset-0 w-full h-full text-white" />}
+                </div>
+                <span className="text-gray-700">In Corso..</span>
+              </label>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {displayedTodos.length === 0 && searchTerm && ( // Mostra solo se c'è un termine di ricerca
+        <div className="text-center text-gray-600 border border-gray-300 rounded-md p-6 flex flex-col items-center justify-center bg-gray-50">
+          <MagnifyingGlassIcon className="h-10 w-10 mb-3 text-gray-500" />
+          <span className="font-medium">Nessun risultato trovato per "{searchTerm}"</span>
+          <span className="text-sm text-gray-500 mt-1">Prova a modificare i criteri di ricerca.</span>
+        </div>
+      )}
+
+      {displayedTodos.length === 0 && !searchTerm && ( // se non ce un termine di ricerca
+        <div className="text-center text-gray-600 border border-gray-300 rounded-md p-6 flex flex-col items-center justify-center bg-gray-50">
+          <InboxIcon className="h-10 w-10 mb-3 text-gray-500" />
+          <span className="font-medium">Nessun elemento nella lista.</span>
+          <span className="text-sm text-gray-500 mt-1">Aggiungi un nuovo elemento per iniziare.</span>
+        </div>
+      )}
+
+      <ul className="space-y-2 max-h-screen overflow-y-auto overflow-x-hidden">
+        {displayedTodos.map((todo, index) => {
+          const isRemoving = itemsToRemove.includes(todo.id);
+          return (
+            <li
+              key={todo.id}
+              className={`font-mono p-3 flex items-center justify-between rounded shadow-sm hover:shadow-md transition-all duration-300
+                ${todo.completed ? 'bg-green-100 border-green-300 text-gray-400 line-through opacity-70' : `${index % 2 === 0 ? 'bg-blue-50' : 'bg-blue-100'} border border-gray-300 text-gray-600`}
+                ${isRemoving ? 'opacity-0 translate-x-full bg-red-200' : ''}`}
+              style={{ transitionProperty: 'opacity, transform' }}
+            >
+              <div className="flex items-start w-full">
+                <button onClick={() => toggleTodo(todo.id)} className="cursor-pointer flex items-center justify-center w-7 h-7 rounded hover:animate-pulse hover:scale-105 focus:outline-none relative shrink-0" aria-label={todo.completed ? "Segna come non completato" : "Segna come completato"}>
+                  {!todo.completed && <div className="absolute inset-0 rounded-full border border-gray-400"></div>}
+                  {todo.completed && <CheckIcon className="w-8 h-8 text-green-500" />}
+                </button>
+                <span className="px-2 flex-grow break-anywhere">{todo.text}</span>
+              </div>
+              <button onClick={() => deleteTodo(todo.id)} aria-label={`Elimina ${todo.text}`} className="text-red-400 hover:text-red-800 hover:animate-spin focus:outline-none shrink-0">
+                <XMarkIcon className="w-6 h-6" />
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </main>
+  </div>
+);
 }

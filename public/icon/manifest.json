@@ -53,6 +53,6 @@
     ],
     "start_url": "/", 
     "display": "standalone",
-    "theme_color": "#85adff", // Colore del tema TODO 
-    "background_color": "#16223b" // Colore di sfondo TODO 
+    "theme_color": "#85adff", 
+    "background_color": "#16223b" 
 }

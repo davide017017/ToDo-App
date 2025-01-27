@@ -2,7 +2,7 @@
 
 **Una semplice applicazione per la gestione di liste di attività (To-Do List) con React e salvataggio in localStorage.**
 
-![Screenshot dell'app (opzionale)](screenshot.png)
+![Screenshot dell'app (opzionale)](ogImage.JPG)
 
 ## Descrizione
 
@@ -10,12 +10,13 @@ Questa applicazione web, sviluppata con React, permette agli utenti di creare, g
 
 ## Funzionalità
 
-*   Aggiunta di nuove attività.
-*   Contrassegno delle attività come completate/non completate.
-*   Eliminazione delle attività.
-*   Salvataggio persistente delle attività in localStorage.
-*   Animazione di scorrimento laterale durante l'eliminazione di un'attività.
-*   Gestione di parole molto lunghe che vengono mandate a capo per non uscire dal contenitore.
+*   Aggiunta di nuove attività.
+*   Contrassegno delle attività come completate/non completate.
+*   Eliminazione delle attività.
+*   Ricerca di attività per testo contenuto nella descrizione.
+*   Salvataggio persistente delle attività in localStorage.
+*   Animazione di scorrimento laterale durante l'eliminazione di un'attività.
+*   Gestione di parole molto lunghe che vengono mandate a capo per non uscire dal contenitore.
 
 ## Tecnologie
 

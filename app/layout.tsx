@@ -47,23 +47,28 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it">
       <head>
       </head>
       <body className="bg-blue-950 font-sans min-h-screen flex flex-col">
-        <header className="bg-blue-100 text-black p-4 text-center">
-          <h1 className="text-2xl font-bold">ToDo App</h1>
+
+        <header className="bg-gradient-to-b from-blue-200 to-blue-400 text-blue-950 p-4 text-center border-b border-blue-500 shadow-lg">
+          <h1 className="text-2xl font-bold tracking-wide text-blue-950">ToDo App</h1> 
         </header>
 
         <main className="container mx-auto p-4 flex-grow">
           {children}
         </main>
 
-        <footer className="bg-blue-300 text-black p-4 text-center shadow-inner">
+        <footer className="bg-gradient-to-t from-blue-200 to-blue-400 text-blue-950 p-4 text-center border-t border-blue-500">
           <p className="text-sm">© {new Date().getFullYear()} Made by davide017017</p>
         </footer>
+
       </body>
     </html>
   );
