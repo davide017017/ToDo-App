@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo List App
 
-## Getting Started
+**Una semplice applicazione per la gestione di liste di attività (To-Do List) con React e salvataggio in localStorage.**
 
-First, run the development server:
+![Screenshot dell'app (opzionale)](screenshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Descrizione
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Questa applicazione web, sviluppata con React, permette agli utenti di creare, gestire e organizzare le proprie attività quotidiane. Le attività vengono salvate automaticamente nella memoria locale del browser (localStorage), garantendo la persistenza dei dati anche dopo la chiusura della pagina.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Funzionalità
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*   Aggiunta di nuove attività.
+*   Contrassegno delle attività come completate/non completate.
+*   Eliminazione delle attività.
+*   Salvataggio persistente delle attività in localStorage.
+*   Animazione di scorrimento laterale durante l'eliminazione di un'attività.
+*   Gestione di parole molto lunghe che vengono mandate a capo per non uscire dal contenitore.
 
-## Learn More
+## Tecnologie
 
-To learn more about Next.js, take a look at the following resources:
+*   React
+*   TypeScript
+*   Tailwind CSS (per lo styling)
+*   Heroicons (per le icone)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Licenza
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Questo portfolio è distribuito sotto licenza MIT. Vedi il file `LICENSE` per maggiori informazioni.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copyright (c) 2025 davide017017
