@@ -35,12 +35,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/icon/icons8-todo-list-cloud-32.png', // Favicon principale (32x32)
-    shortcut: '/icon/icons8-todo-list-cloud-16.png', // Shortcut icon (16x16)
+    icon: '/icon/icons8-lista-di-cose-da-fare-bubbles-32.png', // Favicon principale (32x32)
+    shortcut: '/icon/icons8-lista-di-cose-da-fare-bubbles-16.png', // Shortcut icon (16x16)
     other: [
       {
         rel: 'apple-touch-icon',
-        url: '/icon/icons8-todo-list-cloud-96.png',
+        url: '/icon/icons8-lista-di-cose-da-fare-bubbles-96.png',
       },
     ],
   },
