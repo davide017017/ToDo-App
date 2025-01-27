@@ -1,8 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dcc7220a-821d-4eea-8aee-a56236301d08/deploy-status)](https://app.netlify.com/sites/todo-app-davide-martinco/deploys)
+
 # Todo List App
 
 **Una semplice applicazione per la gestione di liste di attività (To-Do List) con React e salvataggio in localStorage.**
-
-![Screenshot dell'app (opzionale)](ogImage.JPG)
 
 ## Descrizione
 

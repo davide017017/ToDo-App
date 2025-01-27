@@ -11,10 +11,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'ToDo App (NextJs15)',
     description: 'Una semplice e intuitiva ToDo app creata con Next.js per organizzare le tue attività quotidiane.',
-    url: 'https://yourwebsite.com', // URL del tuo sito (IMPORTANTE!)///////////////////////////////////////////////////////////////TODO
+    url: 'https://todo-app-davide-martinco.netlify.app/', 
     images: [
       {
-        url: 'https://yourwebsite.com/og-image.png', // URL dell'immagine OG////////////////////////////////////////////////////////TODO
+        url: '/ogimage.JPG', 
         width: 1200,
         height: 630,
         alt: 'Anteprima della ToDo App',
