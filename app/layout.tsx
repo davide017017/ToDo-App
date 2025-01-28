@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './styles/globals.css';
 
+
+
 export const metadata: Metadata = {
   title: {
     default: 'ToDo App (NextJs15)', 
@@ -35,15 +37,29 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/icon/icons8-lista-di-cose-da-fare-bubbles-96.ico', // Favicon principale (32x32)
-    shortcut: '/icon/icons8-lista-di-cose-da-fare-bubbles-16.png', // Shortcut icon (16x16)
+    icon: '/icon/icons8-lista-di-cose-da-fare-bubbles-96.ico',
+    shortcut: '/icon/icons8-lista-di-cose-da-fare-bubbles-16.png',
+    apple: '/icon/ToDo-180x180.png', // Dimensioni tipiche per Apple touch icon
     other: [
-      {
-        rel: 'apple-touch-icon',
-        url: '/icon/icons8-lista-di-cose-da-fare-bubbles-96.png',
-      },
+        {
+            rel: 'apple-touch-icon',
+            url: '/icon/icons8-lista-di-cose-da-fare-bubbles-96.png',
+        },
+        {
+            rel: 'icon', // Per le icone "normali" (non apple)
+            url: '/icon/ToDo-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+        },
+                {
+            rel: 'icon',
+            url: 'ToDo-900x512.png',
+            sizes: '900x512',
+            type: 'image/png'
+        },
+
     ],
-  },
+},
   manifest: '/site.webmanifest',
 };
 
