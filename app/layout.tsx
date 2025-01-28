@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="it">
       <head>
       </head>
-      <body className="bg-blue-950 font-sans min-h-screen flex flex-col">
+<body className="bg-gradient-to-br from-blue-900 to-black font-sans min-h-screen flex flex-col">
 
         <header className="bg-gradient-to-b from-blue-200 to-blue-400 text-blue-950 p-4 text-center border-b border-blue-500 shadow-lg">
           <h1 className="text-2xl font-bold tracking-wide text-blue-950">ToDo App</h1> 

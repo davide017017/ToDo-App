@@ -51,6 +51,7 @@
             "purpose": "any"
         }
     ],
+    "favicon":"ToDo-900x512.png",
     "start_url": "/", 
     "display": "standalone",
     "theme_color": "#85adff", 
