@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/icon/icons8-lista-di-cose-da-fare-bubbles-32.png', // Favicon principale (32x32)
+    icon: '/icon/icons8-lista-di-cose-da-fare-bubbles-96.ico', // Favicon principale (32x32)
     shortcut: '/icon/icons8-lista-di-cose-da-fare-bubbles-16.png', // Shortcut icon (16x16)
     other: [
       {
