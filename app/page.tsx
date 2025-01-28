@@ -162,7 +162,7 @@ return (
           </button>
 
           {showSortDropdown && (
-            <div className="absolute top-full left-0 z-10 w-48 bg-white rounded-md shadow-lg border border-gray-300 transition-opacity duration-300 animate-fade-in">
+            <div className="absolute top-full left-0 z-10 w-48 bg-white text-black rounded-md shadow-lg border border-gray-300 transition-opacity duration-300 animate-fade-in">
               <button onClick={() => handleSortOrderChange('recent')} className={`w-full text-left py-2 px-3 hover:bg-gray-100 transition-colors duration-300 text-sm flex items-center ${sortOrder === 'recent' ? 'bg-gray-200' : ''}`}>
                 <NewspaperIcon className="h-4 w-4 mr-2" />
                 <span>Più recenti</span>
@@ -213,14 +213,14 @@ return (
       </div>
 
       <div className={`pb-2 transition-all duration-500 ease-in-out overflow-hidden ${showFilters ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="bg-yellow-100 border border-yellow-300 rounded shadow-sm p-4">
+        <div className="bg-yellow-100 border border-yellow-300 rounded shadow-sm p-4 text-black">
           <div className="flex justify-between mb-4">
             <input
               type="text"
               placeholder="Cerca..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="font-mono border border-orange-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-orange-500 outline-none"
+              className="font-mono border border-orange-300 rounded px-3 py-2 w-full focus:ring-2 focus:ring-orange-500 outline-none text-black"
             />
             <button
               onClick={() => setShowFilters(false)}
