@@ -15,7 +15,7 @@ import {
 import ConfirmationDialog from './components/ConfirmationDialog'; // o il percorso corretto
 
 import backgroundImage from './styles/PAPER.jpg';
-import TodoListTabs from './components/TodoListTabs';
+import TodoListTabs from './components/TodoList/TodoListTabs';
 
 // Constants - Costanti globali per lo stile e la funzionalità dell'applicazione
 const STORAGE_KEY_LISTS = 'todos-app-lists-key'; // Costante per la chiave di storage delle liste (aggiornata per le liste multiple)

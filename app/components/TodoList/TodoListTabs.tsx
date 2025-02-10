@@ -1,5 +1,5 @@
 import React from 'react';
-import { TodoList } from '../page';
+import { TodoList } from '../../page';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
 
 interface TodoListTabsProps {
@@ -40,7 +40,7 @@ const TodoListTabs: React.FC<TodoListTabsProps> = ({ todoLists, currentListId, s
                     <button
                         key={list.id}
                         className={`px-4 py-2 -mb-px m-2 font-medium text-gray-700 hover:text-gray-900 focus:outline-none shrink-0 transition-opacity duration-200
-                                   ${currentListId === list.id
+                                    ${currentListId === list.id
                                         ? 'border-b-4 border-blue-500 text-blue-700 bg-gray-50 shadow-md'
                                         : 'border-b-2 border-transparent hover:border-gray-300 hover:bg-gray-100 opacity-75 hover:opacity-100'
                                     }`}
