@@ -25,7 +25,6 @@ const SortControls: React.FC<SortControlsProps> = ({
         <button
             onClick={toggleSortDropdown}
             className={`
-                flex flex-nowrap
                 bg-gradient-to-r from-gray-300 to-gray-100
                 border border-gray-800 rounded-lg p-2 m-1 transition-colors duration-500 flex items-center
                 hover:bg-gradient-to-r hover:from-gray-200 hover:to-gray-400
