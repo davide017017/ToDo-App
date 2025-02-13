@@ -9,8 +9,8 @@
 
 **Un'applicazione web moderna e intuitiva per la gestione delle tue attività, costruita con React, TypeScript e Tailwind CSS, con persistenza dei dati grazie a localStorage.**
 
-[Image of Todo List App - Inserisci qui uno screenshot o GIF animata dell'applicazione in azione]
-*(Esempio: Sostituisci questa riga con un link a uno screenshot o GIF animata della tua app)*
+[app\assets\todo-app-screenshot.JPG]
+app\assets\todo-app-screenshot.JPG
 
 ## ✨ Panoramica
 
