@@ -9,7 +9,7 @@
 
 **Un'applicazione web moderna e intuitiva per la gestione delle tue attività, costruita con React, TypeScript e Tailwind CSS, con persistenza dei dati grazie a localStorage.**
 
-[app\assets\todo-app-screenshot.JPG]
+[assets\todo-app-screenshot.JPG]
 app\assets\todo-app-screenshot.JPG
 
 ## ✨ Panoramica
