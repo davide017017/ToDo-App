@@ -1,5 +1,6 @@
-import React, { useState } from 'react'; // Importa useState
+'use client'
 
+import React, { useState, useEffect } from 'react';
 import { ListBulletIcon } from '@heroicons/react/24/outline';
 import { TodoList } from '../../page';
 
@@ -26,16 +27,13 @@ interface ListManagementControlsProps {
 }
 
 const ListManagementControls: React.FC<ListManagementControlsProps> = ({
-    isListManagementVisible, setIsListManagementVisible, newListNameToCreate, setNewListNameToCreate, createNewTodoList,
-    isRenamingList, setIsRenamingList, currentListName, setCurrentListName, renameCurrentTodoList, showDeleteConfirmation,
-    newTodo, setNewTodo, addTodo, isDeleteConfirmationVisible, hideDeleteConfirmation, deleteCurrentTodoList, todoLists, currentListId
+    isListManagementVisible, setIsListManagementVisible, newListNameToCreate, setNewListNameToCreate, createNewTodoList,currentListName, setCurrentListName, renameCurrentTodoList, showDeleteConfirmation,
 }) => {
 
     // Stati per la visibilità degli input e bottone attivo
     const [isCreateListInputVisible, setIsCreateListInputVisible] = useState(false);
     const [isRenameListInputVisible, setIsRenameListInputVisible] = useState(false);
-    const [activeButton, setActiveButton] = useState< 'create' | 'rename' | null>(null); // Stato per il bottone attivo
-
+    const [activeButton, setActiveButton] = useState< 'create' | 'rename' | null>(null); 
 
     // Classi CSS per l'animazione (mantieni quelle esistenti)
     const FILTER_CONTAINER_TRANSITION_CLASSES = " transition-opacity transition-all duration-1000 ease-in-out transform origin-top-right";
@@ -44,11 +42,30 @@ const ListManagementControls: React.FC<ListManagementControlsProps> = ({
     const FILTER_ACTIVE_CLASS = "bg-yellow-400 text-gray-800 hover:bg-yellow-500 ring-2 ring-offset-2 ring-yellow-400 shadow-2xl shadow-yellow-300";
     const FILTER_INACTIVE_CLASS = "bg-yellow-100 text-gray-700 hover:bg-yellow-200";
 
+    // Effetto per gestire la chiusura del div con ESC
+    useEffect(() => {
+        const handleEscClose = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                if (isCreateListInputVisible || isRenameListInputVisible) {
+                    setIsCreateListInputVisible(false);
+                    setIsRenameListInputVisible(false);
+                    setActiveButton(null);
+                } else if (isListManagementVisible) {
+                    setIsListManagementVisible(false);
+                }
+            }
+        };
+
+        document.addEventListener('keydown', handleEscClose);
+
+        return () => {
+            document.removeEventListener('keydown', handleEscClose); // Cleanup quando il componente viene smontato
+        };
+    }, [isCreateListInputVisible, isRenameListInputVisible, isListManagementVisible, setIsListManagementVisible, setActiveButton, setIsCreateListInputVisible, setIsRenameListInputVisible]);
 
     return (
-        <>
         <div>
-            {/* Bottone per attivare/disattivare il div di gestione liste (MANTENUTO) */}
+            {/* Bottone per attivare/disattivare il div di gestione liste */}
             <div className="mb-2 flex justify-center">
                 <button
                     onClick={() => setIsListManagementVisible(!isListManagementVisible)}
@@ -65,9 +82,8 @@ const ListManagementControls: React.FC<ListManagementControlsProps> = ({
                     ${isListManagementVisible ? FILTER_CONTAINER_OPEN_CLASSES : FILTER_CONTAINER_CLOSED_CLASSES}
                     rounded-lg mb-4 bg-yellow-100 overflow-hidden p-4 border border-black gap-1`}>
 
-
-                    <div className="flex justify-center"> 
-                        {/* Bottoni Crea, Rinomina, Elimina Lista (LAYOUT MODIFICATO) */}
+                    <div className="flex justify-center">
+                        {/* Bottoni Crea, Rinomina, Elimina Lista */}
                         <div className="flex gap-3 align-middle">
                             <button
                                 onClick={() => {
@@ -102,7 +118,7 @@ const ListManagementControls: React.FC<ListManagementControlsProps> = ({
 
                     {/* Input Crea Lista (RENDERIZZATO CONDIZIONALMENTE) */}
                     {isCreateListInputVisible && (
-                        <div className="p-2"> 
+                        <div className="p-2">
                             <div className="flex items-center space-x-2 p-1">
                                 <input
                                     type="text"
@@ -150,7 +166,6 @@ const ListManagementControls: React.FC<ListManagementControlsProps> = ({
                 </div>
             )}
         </div>
-        </>
     );
 };
 

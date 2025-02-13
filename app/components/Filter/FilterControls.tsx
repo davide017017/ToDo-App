@@ -30,8 +30,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({ showFilters, setShowFil
 
 
     return (
-        <div className="relative text-center justify-end items-center"> {/* Added relative here for absolute positioning context */}
-            {/* Pulsante "Filtri" - Stile simile a SortControls */}
+        <div className="relative text-center justify-end items-center">
             
             <div className="flex justify-end">
             
@@ -62,7 +61,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({ showFilters, setShowFil
             )}
 
 
-            {/* Pannello dei filtri a scomparsa - STILE "VECCHIO CODICE" e SEMPRE APERTO */}
+            {/* Pannello dei filtri a scomparsa */}
             <div
                 ref={dropdownRef}
                 className={`shadow-xl shadow-black absolute right-0 mt-2 w-72 rounded-lg border-black z-10
@@ -98,7 +97,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({ showFilters, setShowFil
                         </div>
                     </div>
 
-                    {/* Checkbox per filtri di completamento - **STILE "BOTTONE LUMINOSO" APPLICATO QUI - SOLO TAILWIND** */}
+                    {/* Checkbox per filtri di completamento */}
                     <div className="space-y-2 px-4">
                         <div className="flex justify-between">
                             <label className="inline-flex items-center cursor-pointer">
@@ -106,17 +105,17 @@ const FilterControls: React.FC<FilterControlsProps> = ({ showFilters, setShowFil
                                     id="filter-completed"
                                     name="filter-completed"
                                     type="checkbox"
-                                    className="appearance-none focus:outline-none mr-2" // **Rimuove aspetto checkbox, outline focus, spazio a destra**
+                                    className="appearance-none focus:outline-none mr-2" 
                                     checked={filters.completed}
                                     onChange={(e) => handleFilterChange('completed', e.target.checked)}
                                 />
                                 <div
                                     className={`relative w-6 h-6 rounded-md border-2 border-gray-300 transition-all duration-200
-                                        ${filters.completed ? 'bg-green-800 border-green-600 ring-2 ring-green-200 shadow-green-700 shadow-xl' : 'hover:border-gray-400'}`} // **Tailwind classes for "bottone luminoso" & shadow**
+                                        ${filters.completed ? 'bg-green-800 border-green-600 ring-2 ring-green-200 shadow-green-700 shadow-xl' : 'hover:border-gray-400'}`} 
                                 >
                                     {filters.completed && <CheckIcon className="absolute inset-0 w-full h-full text-white" />}
                                 </div>
-                                <span className="text-gray-700" style={{marginLeft: '1.5rem'}}>Fatto</span> {/* Sposta il testo a destra per fare spazio al "bottone"*/}
+                                <span className="text-gray-700" style={{marginLeft: '1.5rem'}}>Fatto</span> 
                             </label>
 
                             <label className="inline-flex items-center cursor-pointer">
@@ -124,17 +123,17 @@ const FilterControls: React.FC<FilterControlsProps> = ({ showFilters, setShowFil
                                     id="filter-incomplete"
                                     name="filter-incomplete"
                                     type="checkbox"
-                                    className="appearance-none focus:outline-none mr-2" // **Rimuove aspetto checkbox, outline focus, spazio a destra**
+                                    className="appearance-none focus:outline-none mr-2" 
                                     checked={filters.incomplete}
                                     onChange={(e) => handleFilterChange('incomplete', e.target.checked)}
                                 />
                                 <div
                                     className={`relative w-6 h-6 rounded-md border-2 border-gray-300 transition-all duration-200
-                                        ${filters.incomplete ? 'bg-blue-800 border-blue-600 ring-2 ring-blue-200 shadow-blue-700/50 shadow-lg' : 'hover:border-gray-400'}`} // **Tailwind classes for "bottone luminoso" & shadow**
+                                        ${filters.incomplete ? 'bg-blue-800 border-blue-600 ring-2 ring-blue-200 shadow-blue-700/50 shadow-lg' : 'hover:border-gray-400'}`} 
                                 >
                                     {filters.incomplete && <ClockIcon className="absolute inset-0 w-full h-full text-white" />}
                                 </div>
-                                <span className="text-gray-700" style={{marginLeft: '1.5rem'}}>In Corso..</span> {/* Sposta il testo a destra per fare spazio al "bottone"*/}
+                                <span className="text-gray-700" style={{marginLeft: '1.5rem'}}>In Corso..</span> 
                             </label>
                         </div>
                     </div>

@@ -13,23 +13,38 @@ const TodoListTabs: React.FC<TodoListTabsProps> = ({ todoLists, currentListId, s
         <>
             {/* Stili scrollbar (INLINE - Tailwind non gestisce direttamente le scrollbar) */}
             <style jsx>{`
-                /* Scrollbar colorata - Blu Vivace (INLINE STYLES - TailWind non la gestisce nativamente) */
                 .todo-list-tabs-container::-webkit-scrollbar {
-                    width: 10px;
-                    height: 10px;
+                    width: 17px;
+                    height: 17px;
                 }
                 .todo-list-tabs-container::-webkit-scrollbar-thumb {
-                    background-color: #3490dc;
-                    border-radius: 10px;
-                    border: 2px solid transparent;
+                    background-color: #56CCF2; /* Blu Smeraldo (più chiaro e vivace del blu originale) */
+                    border-radius: 7px;
+                    border: 3px solid transparent;
                     background-clip: padding-box;
+                    transition: background-color 0.3s ease, border-color 0.3s ease;
+                    box-shadow: 0 0 0 1px rgba(0,0,0,0.7); /* Ombra sottile per profondità */
                 }
                 .todo-list-tabs-container::-webkit-scrollbar-track {
-                    background-color: #f7fafc;
-                    border-radius: 10px;
+                    background-color: #F8F4F0; /* Grigio Caldo molto chiaro (simile al beige caldo) */
+                    border-radius: 7px;
+                    background-clip: padding-box;
+                    transition: background-color 0.3s ease;
                 }
                 .todo-list-tabs-container::-webkit-scrollbar-thumb:hover {
-                    background-color: #2779bd;
+                    background-color: #42A5CC; /* Blu Smeraldo leggermente più scuro */
+                    border-color: #E8E3DF; /* Grigio Caldo leggermente più chiaro su hover */
+                }
+                .todo-list-tabs-container::-webkit-scrollbar-track:hover {
+                    background-color: #F2EDE9; /* Grigio Caldo leggermente più scuro track hover */
+                }
+                .todo-list-tabs-container::-webkit-scrollbar-thumb:active {
+                    background-color: #2E7BB8; /* Blu Smeraldo ancora più scuro per "active" */
+                    border-color: #DAD5D2; /* Grigio caldo più scuro su active */
+                    box-shadow: 0 0 0 2px rgba(0,0,0,0.2); /* Ombra più marcata su "active" */
+                }
+                .todo-list-tabs-container::-webkit-scrollbar-track:active {
+                    background-color: #ECE7E3; /* Grigio Caldo track active leggermente più scuro */
                 }
             `}</style>
 

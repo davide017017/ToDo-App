@@ -35,7 +35,7 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ showSortDropdown, sortOrder
     return (
         <div
             ref={dropdownRef}
-            className="absolute mt-2 w-fit p-1 rounded-md shadow-xl shadow-black bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"  // Ombra nera più marcata
+            className="absolute mt-2 w-fit p-1 rounded-md shadow-xl shadow-black bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"  
             tabIndex={0}
             onBlur={() => setShowSortDropdown(false)}
         >
@@ -51,10 +51,10 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ showSortDropdown, sortOrder
                         handleSortOrderChange('recent');
                         setShowSortDropdown(false);
                     }}
-                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'recent' ? 'font-bold bg-green-100' : ''}`} // Sfondo verde chiaro per selezionato
+                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'recent' ? 'font-bold bg-green-100' : ''}`} 
                     role="menuitem"
                 >
-                    <ListBulletIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> {/* Icona "Più Recenti" cambiata */}
+                    <ListBulletIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> 
                     Più recenti
                     {sortOrder === 'recent' && <span className="ml-auto font-bold text-green-500" aria-hidden="true">✓</span>}
                 </button>
@@ -64,10 +64,10 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ showSortDropdown, sortOrder
                         handleSortOrderChange('oldest');
                         setShowSortDropdown(false);
                     }}
-                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'oldest' ? 'font-bold bg-green-100' : ''}`} // Sfondo verde chiaro per selezionato
+                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'oldest' ? 'font-bold bg-green-100' : ''}`}
                     role="menuitem"
                 >
-                    <CalendarDaysIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> {/* Icona "Meno Recenti" cambiata */}
+                    <CalendarDaysIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> 
                     Meno recenti
                     {sortOrder === 'oldest' && <span className="ml-auto font-bold text-green-500" aria-hidden="true">✓</span>}
                 </button>
@@ -77,10 +77,10 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ showSortDropdown, sortOrder
                         handleSortOrderChange('alphaAsc');
                         setShowSortDropdown(false);
                     }}
-                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'alphaAsc' ? 'font-bold bg-green-100' : ''}`} // Sfondo verde chiaro per selezionato
+                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'alphaAsc' ? 'font-bold bg-green-100' : ''}`} 
                     role="menuitem"
                 >
-                    <BarsArrowDownIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> {/* Icona "A-Z" cambiata */}
+                    <BarsArrowDownIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" />
                     A-Z
                     {sortOrder === 'alphaAsc' && <span className="ml-auto font-bold text-green-500" aria-hidden="true">✓</span>}
                 </button>
@@ -90,10 +90,10 @@ const SortDropdown: React.FC<SortDropdownProps> = ({ showSortDropdown, sortOrder
                         handleSortOrderChange('alphaDesc');
                         setShowSortDropdown(false);
                     }}
-                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'alphaDesc' ? 'font-bold bg-green-100' : ''}`} // Sfondo verde chiaro per selezionato
+                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 ${sortOrder === 'alphaDesc' ? 'font-bold bg-green-100' : ''}`} 
                     role="menuitem"
                 >
-                    <BarsArrowUpIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> {/* Icona "Z-A" cambiata */}
+                    <BarsArrowUpIcon className="h-5 w-5 mr-2 text-gray-500 group-hover:text-gray-700" aria-hidden="true" /> 
                     Z-A
                     {sortOrder === 'alphaDesc' && <span className="ml-auto font-bold text-green-500" aria-hidden="true">✓</span>}
                 </button>

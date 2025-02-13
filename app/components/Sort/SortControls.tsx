@@ -1,12 +1,11 @@
-import React, { JSX } from 'react';
+import React from 'react';
 import SortDropdown from './SortDropdown';
 import { SortOrderType } from '../../page';
-import { NumberedListIcon } from '@heroicons/react/24/outline'; // Importa le nuove icone
+import { NumberedListIcon } from '@heroicons/react/24/outline'; 
 
-// SortControls Component (SortControls.tsx)
 interface SortControlsProps {
     sortOrder: SortOrderType;
-    sortOrderIcons: { [key: string]: JSX.Element };
+    sortOrderIcons: { [key: string]: React.ReactNode }; 
     toggleSortDropdown: () => void;
     showSortDropdown: boolean;
     handleSortOrderChange: (newOrder: SortOrderType) => void;
@@ -33,9 +32,9 @@ const SortControls: React.FC<SortControlsProps> = ({
             `}
         >
             <NumberedListIcon className="h-5 w-5 mx-2" />
-            <span>Ordina per: </span> {/* Modifica testo per chiarezza */}
-            <span className='mx-1'> {/* Ridotto il margin */}
-                {sortOrderIcons[sortOrder]} {/* Usa l'icona direttamente */}
+            <span>Ordina per: </span> 
+            <span className='mx-1'> 
+                {sortOrderIcons[sortOrder]} 
             </span>
         </button>
         <SortDropdown
